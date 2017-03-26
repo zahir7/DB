@@ -85,10 +85,10 @@ C:\oraclexe\app\oracle\product\10.2.0\server\NETWORK\ADMIN 에서 tnsnames.ora �
 
 (3)ALIAS 사용하기 (칼럼에 별칭 붙이기)
 
-	SQL> select empno ename as "no", ename as "na" from emp;
+	SQL> select empno, ename as "no", ename as "na" from emp;
 
 	- 큰 따옴표 " " 생략 가능
-	SQL> select empno ename as no, ename as na from emp;
+	SQL> select empno, ename as no, ename as na from emp;
 
 	- as와 큰 따옴표 " " 는 생략이 가능하다 (공백문자가 있으면 안됨 = > 사원 번호)
 	SQL> select empno no, ename na from emp;
