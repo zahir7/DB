@@ -790,7 +790,7 @@ C:\oraclexe\app\oracle\product\10.2.0\server\NETWORK\ADMIN 에서 tnsnames.ora �
 
 	ex) member 테이블의 내용 중 num 칼럼이 3인 회원의 주소를 인천으로 수정하세요
 	 SQL> update member set addr = '인천' where num = 3;
-	 SQL> update member set name = '김구라' where num = 1;
+	 SQL> update member set name = '김태호' where num = 1;
 
 	ex) member 테이블의 내용 중 num 칼럼이 2인 회원의 이름과 주소를 '한빛','강남'으로 바꿔보세요
 	 SQL> update member set name='한빛',addr = '강남' where num = 2;
@@ -972,7 +972,7 @@ C:\oraclexe\app\oracle\product\10.2.0\server\NETWORK\ADMIN 에서 tnsnames.ora �
  increment by 한 번에 증감할 양(default: +1)
  start with 시작 값 (default:0)
  
- SQL> insert into member values(member_seq.nextval,'김구라','노량진');
+ SQL> insert into member values(member_seq.nextval,'김태호','노량진');
  SQL> insert into member values(member_seq.nextval,'홍길동','인천');
  SQL> insert into member values(member_seq.nextval,'나야나','수원');
 
