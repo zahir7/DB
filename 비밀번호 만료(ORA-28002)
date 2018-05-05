@@ -1,0 +1,174 @@
+
+비밀번호 만료 (ORA-28002: the password will expire within 7 days)
+
+1. 기간확인 
+
+
+SQL> select resource_name, resource_type, limit
+
+         from dba_profiles ;
+
+
+ 
+
+
+RESOURCE_NAME                  RESOURCE_TYPE    LIMIT
+
+------------------------------ ----------------    -------
+
+
+PASSWORD_LIFE_TIME             PASSWORD            180
+
+
+ 
+
+
+ 
+
+
+2. password_life_time 값을 unlimited로 바꾸어 줌
+
+
+ 
+
+
+SQL> alter profile default limit PASSWORD_LIFE_TIME unlimited ;
+
+
+          Profile altered.
+
+
+ 
+
+
+RESOURCE_NAME                    RESOURCE_TYPE     LIMIT
+
+------------------------------ ----------------      -------
+
+
+PASSWORD_LIFE_TIME             PASSWORD              UNLIMITED
+
+
+ 
+
+
+
+
+
+3. 해당 유저의 password 속성 변경
+
+
+ 
+
+
+현재 상태 조회
+
+
+      SQL> select username, account_status, lock_date, expiry_date
+
+              from dba_users
+
+              where username = 'SCOTT' ;
+
+
+ 
+
+
+          USERNAME             ACCOUNT_STATUS             LOCK_DATE    EXPIRY_DATE
+
+          -----------------   -------------------             ------------    -------------
+
+
+          SCOTT                   EXPIRED(GRACE)                                      18-DEC-13
+
+
+ 
+
+
+해당 유저의 password 속성 변경
+
+
+ 
+
+
+       SQL> alter user scott identified by password ;
+
+
+                User altered.
+
+
+ 
+
+
+ 
+
+
+속성변경 확인
+
+
+ 
+
+
+        SQL> select username, account_status, lock_date, expiry_date
+
+                 from dba_users
+
+                 where username = 'SCOTT' ;
+
+
+ 
+
+
+               USERNAME          ACCOUNT_STATUS     LOCK_DATE       EXPIRY_DATE
+
+               ----------------- -------------------    ------------      -------------
+
+
+               SCOTT                  OPEN
+
+
+ 
+
+
+               ---> account_status 값이 OPEN,   expiry_date 값이 NULL 값으로 변경된것을 확인
+
+
+
+
+
+
+
+
+
+
+Oracle 접속이 안될때 (ORA-01017: invalid username/password; logon denied) 
+
+
+1. system 계정으로 접속
+
+sys/manager 
+
+
+
+
+2. 계정 이름 확인
+
+
+select * from dba_users;
+
+
+
+
+
+3. lock 해제(계정이름 입력)
+
+
+alter user 'username' account unlock;
+
+
+
+
+4. 비밀번호 변경(계정이름, 비밀번호 입력)
+
+
+alter user username identified by userpassword;
