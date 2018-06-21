@@ -1,0 +1,103 @@
+1. 테이블스페이스 생성
+
+CREATE TABLESPACE 테이블스페이스명
+
+DATAFILE '/oradata/orcl/테이블스페이스명.dbf' 
+
+SIZE 100M autoExtend on next 100M;
+
+
+
+2. TEMP 테이블스페이스 생성
+
+CREATE TEMPORARY TABLESPACE TEMP테이블스페이스명
+
+'/oradata/orcl/TEMP테이블스페이스명.dbf'  
+
+SIZE 100M  autoExtend on next 100M;
+
+
+
+3. 테이블스페이스 삭제
+
+drop tablespace 테이블스페이스명
+
+including contents and datafiles
+
+cascade constraints;
+
+
+
+3. 유저 생성
+create user admin identified by "admin1111"
+default tablespace MANAGER
+temporary tablespace MANAGERTEMP;
+
+
+
+4. 권한주기
+
+grant connect to admin;
+
+grant resource to admin;
+grant connect, resource, create view, create procedure, create sequence  to admin;
+
+
+
+
+
+
+
+
+
+[실제예제]
+
+--모든  테이블 스페이스 조회
+
+SELECT * FROM DBA_TABLESPACES;
+
+
+
+-- 테이블 스페이스 생성
+
+CREATE TABLESPACE RANT 
+
+DATAFILE 'C:\oraclexe\oradata\XE\RANT.DBF'
+
+SIZE 100M AUTOEXTEND ON NEXT 100M;
+
+
+
+-- 테이블 스페이스 삭제
+
+DROP TABLESPACE RANTDB;
+
+
+
+-- TEMP 테이블스페이스 생성
+
+CREATE TEMPORARY TABLESPACE tempRantdb
+
+DATAFILE 'C:\oraclexe\oradata\XE\TEMPORYRANTDB.DBF'
+
+SIZE 100M AUTOEXTEND ON NEXT 100M;
+
+
+
+
+
+-- 유저 생성
+
+CREATE USER RANTDB IDENTIFIED BY RANTDB
+
+DEFAULT TABLESPACE RANT
+
+TEMPORARY TABLESPACE TEMP;
+
+
+
+
+
+--권한주기
+
+GRANT CONNECT, RESOURCE, DBA TO RANTDB;
