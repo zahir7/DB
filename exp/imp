@@ -1,0 +1,3 @@
+exp ktl_developer/0000@ktl file=ktl_developer.dmp full=y;
+
+imp userid=ktl_developer/0000 file='C:\ktl_developer.dmp' commit=y ignore=y full=y
