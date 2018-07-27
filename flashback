@@ -1,0 +1,2 @@
+select original_name, operation, droptime from recyclebin;
+flashback table table_name to before drop;
