@@ -1,0 +1,3 @@
+exp USERID/PASSWORD@ktl file=파일명.dmp full=y;
+
+imp userid=USERID/PASSWORD file='C:\파일명.dmp' commit=y ignore=y full=y
